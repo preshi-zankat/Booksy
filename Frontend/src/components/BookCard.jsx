@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function BookCard({ book }) {
   return (
@@ -14,9 +15,9 @@ function BookCard({ book }) {
         <p className="text-sm text-gray-600 line-clamp-2 mb-3">{book.description}</p>
         <div className="flex justify-between items-center">
           <span className="text-pink-600 font-semibold text-sm">₹{book.price}</span>
-          <button className="text-sm bg-pink-500 text-white px-3 py-1 rounded hover:bg-pink-600 transition">
+          <Link  to={`/book/${book._id}`} className="text-sm bg-pink-500 text-white px-3 py-1 rounded hover:bg-pink-600 transition">
             View
-          </button>
+          </Link>
         </div>
       </div>
     </div>

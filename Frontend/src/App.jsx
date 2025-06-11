@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import FeaturedBooks from './pages/FeaturedBooks'
+ import BookDetail from './pages/BookDetailPage' 
 function App() {
   return (
     <div>
@@ -17,7 +18,7 @@ function App() {
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/featured-books" element={<FeaturedBooks />} />
-            {/* Add more routes as needed */}
+            <Route path="/book/:id" element={<BookDetail />} />
           </Routes>
         </Router>
       </AuthProvider>

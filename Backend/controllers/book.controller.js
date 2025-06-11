@@ -26,15 +26,15 @@ export const getBookById =asyncHandler(async (req, res) => {
 })
 
 export const createBook =asyncHandler(async (req, res) => {
-    const { title, author, description } = req.body;
-    if (!title || !author || !description) {
+    const { title, author, description, genre } = req.body;
+    if (!title || !author || !description || !genre) {
         throw new ApiError(400, "All fields are required");
     }
-    const book = await Book.create({ title, author, description});
-    res.status(201).json(new ApiResponse("Book created successfully", book));
+    const book = await Book.create({ title, author, description, genre });
     if (!book) {
         throw new ApiError(500, "Failed to create book");
     }
+    res.status(201).json(new ApiResponse("Book created successfully", book));
 })
 
 export const updateBook =asyncHandler(async (req, res) => {
