@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getBookById } from '../api/book.api';
+import ReviewCard from '../components/ReviewCard';
 
 function BookDetail() {
   const { id } = useParams(); 
@@ -21,6 +22,8 @@ function BookDetail() {
     };
     fetchBook();
   }, [id]);
+
+  
 
   if (loading) {
     return <div className="text-center mt-10">Loading book...</div>;
@@ -55,7 +58,15 @@ function BookDetail() {
             </div>
           <h2 className="text-lg font-semibold mb-2">Description</h2>
           <p className="text-gray-700 leading-relaxed">{book.description}</p>
+           <button className='mt-4 px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700' onClick={() => navigate(`/review/${book._id}`)}>Give your review</button>
         </div>
+       
+      </div>
+      <div>
+        <h2 className="text-2xl text-center font-bold text-gray-800 mt-8 mb-4">Reviews</h2>
+        {book.reviews.map((review) => (
+          <ReviewCard key={review._id} review={review} />
+        ))}
       </div>
     </div>
   );

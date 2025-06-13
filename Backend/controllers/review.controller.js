@@ -1,10 +1,10 @@
-import Review from "../model/review.model";
+import Review from "../model/review.model.js";
 import User from "../model/user.model.js"
 import { asyncHandler } from "../utils/asyncHandler.js"
 import { ApiError } from "../utils/ApiError.js"
 import { ApiResponse } from "../utils/ApiResponse.js"
 
-export const getReviewByBook=asyncHandler(async(req,res)=>{
+export const getReviewsByBookId=asyncHandler(async(req,res)=>{
     try {
         const reviews=Review.find({bookId:req.qury.bookId}).populate('userId','name _id')
 

@@ -17,6 +17,7 @@ function SignIn() {
 
     return (
         <div className='flex items-center justify-center min-h-screen bg-[#FFF1F3]'>
+            
             <div className='bg-white p-8 rounded-xl shadow-lg w-full max-w-md'>
                 <h1 className='text-4xl font-bold text-center font-lora text-gray-800 mb-6'>Sign In</h1>
                 <form onSubmit={handleSubmit} className='space-y-4'>

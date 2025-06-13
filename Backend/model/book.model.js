@@ -9,7 +9,7 @@ const bookSchema=new mongoose.Schema({
         type:String
     },
     description: String,
-    genre:{
+    genre:{ 
         type:String
     },
     like:{
