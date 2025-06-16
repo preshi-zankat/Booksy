@@ -17,6 +17,10 @@ export const signup = asyncHandler(async (req, res) => {
         throw new ApiError(400, "User already exists with this email");
     }
 
+    if(req.file){
+        req.body.avatar=req.file.filename
+    }
+
     // Create new user
     const user=await User.create({
         name,
@@ -24,6 +28,10 @@ export const signup = asyncHandler(async (req, res) => {
         password,
         bio
     })
+    if(req.file){
+        user.image=req.file.filename
+    }
+    await user.save();
     if (!user) {
         throw new ApiError(500, "Failed to create user");
     }
