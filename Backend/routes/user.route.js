@@ -6,7 +6,7 @@ import upload from '../middleware/multer.js';
  
 
 router.post('/signup',upload.single('image'), signup);
-router.post('/login', verifyJwt,login);
+router.post('/login',login);
 router.post('/logout',verifyJwt, logout);
 router.get('/profile',verifyJwt, getUserProfile);
 router.put('/profile',upload.single('image'),verifyJwt, updateUserProfile);

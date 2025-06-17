@@ -18,7 +18,7 @@ export const signup = asyncHandler(async (req, res) => {
     }
 
     if(req.file){
-        req.body.avatar=req.file.filename
+        req.body.image=req.file.filename
     }
 
     // Create new user
@@ -48,7 +48,7 @@ export const login=asyncHandler(async(req, res) => {
     if (!user) {
       throw new ApiError(401, "Invalid email or password");
     }
-    if (!user.comparePassword(password)) {
+    if (!(await user.comparePassword(password))) {
       throw new ApiError(401, "Invalid email or password");
     }
     const token = user.generateAuthToken();
